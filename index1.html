@@ -16,6 +16,10 @@
             border: 1px solid;
             text-align: center;
         }
+        input{
+            width: 150px;
+            height: 50px;
+        }
         #box div{
             width: 500px;
             height: 500px;
@@ -24,15 +28,36 @@
             display: none;
         }
         #box input.ac{
+            width: 150px;
+            height: 50px;
             background-color: aqua;
         }
     </style>
+    <script>
+        window.onload=function(){
+            var oDox=document.getElementById("box");
+            var aBtn=document.getElementsByTagName("input");
+            var aDiv=oDox.getElementsByTagName("div");
+
+            for(var i=0;i<aBtn.length;i++){
+                aBtn[i].index=i;
+                aBtn[i].onclick=function(){
+                    for(var i=0;i<aBtn.length;i++){
+                        aBtn[i].className="";
+                        aDiv[i].style.display="none"
+                    }
+                    this.className="ac";
+                    aDiv[this.index].style.display="block"
+                }
+            }
+        }
+    </script>
 </head>
 <body>
 <div id="box">
-    <input type="button" value="选择一" class="ac"/>
-    <input type="button" value="选择二"/>
-    <input type="button" value="选择三"/>
+    <input type="button" value="选择一" class="ac btn"/>
+    <input type="button" value="选择二" class="btn"/>
+    <input type="button" value="选择三" class="btn"/>
     <div style="display: block">11111</div>
     <div>22222</div>
     <div>33333</div>
