@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>index1</title>
+    <title>index2</title>
 </head>
 <body>
 <select id="country" onchange="aSelect(this.value)">            <!--创造一个省的下拉选单-->
@@ -18,6 +18,11 @@
         var aCountry=document.getElementById("country");        //通过Id得到省的下拉菜单的元素
         var aArea=document.getElementById("area");              //通过Id得到市的下拉菜单的元素
         var judge=aArea.getElementsByTagName("option");         //获取市下拉菜单的各个option值
+        for(m=0;m<judge.length;m++){                            //循环option值得长度次数
+            var Delete=judge[m];                                 //将每一个option的值赋给变量Delete；
+            aArea.removeChild(Delete);                           //删除每次变换留下来的残值
+            m--;                                                    //删除每一个下标0里的值
+        }
         var city=aCountry.value;                        //将第一个下拉菜单赋值给city变量
         var city_Region=new Array(4);                   //设置一个长度为4的数组________目的是为了创造一个二维数组.
         city_Region[0]=["上海","黄浦区","徐汇区","长宁区","静安区","普陀区","虹口区","杨浦区"];    //设置上海数组___
