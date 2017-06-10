@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index1</title>
+</head>
+<body>
+<select id="country" onchange="aSelect(this.value)">            <!--创造一个省的下拉选单-->
+    <option value="0">--请选择--</option>                  <!--分别给他们设置上属于各自的Value值-->
+    <option value="上海">上海</option>
+    <option value="北京">北京</option>
+    <option value="广州">广州</option>
+    <option value="香港">香港</option>
+</select>
+<select id="area"></select>                                 <!--创造一个市的下拉选单-->
+<script>
+    function aSelect(Value1) {                                  //定义一个函数______________并为其定义参数Value
+        var aCountry=document.getElementById("country");        //通过Id得到省的下拉菜单的元素
+        var aArea=document.getElementById("area");              //通过Id得到市的下拉菜单的元素
+        var judge=aArea.getElementsByTagName("option");         //获取市下拉菜单的各个option值
+        var city=aCountry.value;                        //将第一个下拉菜单赋值给city变量
+        var city_Region=new Array(4);                   //设置一个长度为4的数组________目的是为了创造一个二维数组.
+        city_Region[0]=["上海","黄浦区","徐汇区","长宁区","静安区","普陀区","虹口区","杨浦区"];    //设置上海数组___
+        city_Region[1]=["北京","东城区","西城区","朝阳区","丰台区","海淀区","昌平区","顺义区"];    //设置北京数组___
+        city_Region[2]=["广州","荔湾区","越秀区","海珠区","天河区","白云区","番禺区","花都区"];    //设置广州数组___
+        city_Region[3]=["香港","西贡区","葵青区","大埔区","观塘区","南区","沙田区","荃湾区"];      //设置香港数组___
+        for (i=0;i<city_Region.length;i++){                                     //设定一个循环,目的是设置出所有的option值并且加入进去第二个select.
+            var a_City_Region=city_Region[i];
+            var firstValue=a_City_Region[0];
+            if(firstValue == Value1){                                            //再循环里加入一个判断
+                for(j=1;j<a_City_Region.length;j++){                            //从下标一开始判断后面的值
+//                    var city_Name = a_City_Region[j];                    //将每一个option的值附给变量city_Name
+                    var Option1=document.createElement("option");       //创造出一个option元素
+                    var Text1=document.createTextNode( a_City_Region[j]);        //创造出文本。文本内容是option里的值
+                    Option1.appendChild(Text1);                 //将option里的值附给option
+                    aArea.appendChild(Option1);                 //将option里附给第二个下拉菜单.
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
