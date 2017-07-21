@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>留言板</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #banner{
+            width: 350px;
+            /*text-align: center;*/
+            background: #f3f3f3;
+            border: 2px solid #bdbdbd;
+            margin-left: 100px;
+        }
+        #yj-liuy{
+            width: 330px;
+            height: 60px;
+            margin-left: 10px;
+            border: 2px solid #acacac;
+            background: #cccccc;
+        }
+        p{
+            width: 300px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="banner">
+    <br/>
+    <p>姓名：<input type="text" style="width: 250px;height: 30px"/></p>
+    <br/>
+    <p><lable style="vertical-align: top">内容：</lable><textarea style="width: 250px;height: 150px"></textarea>
+        <br/>
+        <button id="yj-tj" style="width: 70px;height: 40px;background: cyan;margin-left: 140px">提交</button>
+    <h3>显示留言</h3>
+    <div id="yj-ly"></div>
+    <button id="yj-qs">全部删除</button>
+</div>
+
+</body>
+<script src="../js/jquery-3.1.1.js"></script>
+<script>
+    $(function(){
+        $("#yj-tj").click(function(){
+                if($(":input").val()==""){
+                    alert("名字不能为空")
+                }
+                if($("textarea").val()==""){
+                    alert("内容不能为空")
+                }else{
+                   $("#yj-ly").append("<div id='yj-liuy'><h4>"+$(":input").val()+"</h4><p>"+$("textarea").val()+"<button class='yj-sc' style='margin-left: 200px'>删除</button></p></div>")
+                    $(":input").val("")
+//        删除
+            $(".yj-sc").click(function(){
+            $(this).parents("#yj-liuy").remove()
+            })
+//           全部删除
+                $("#yj-qs").click(function(){
+                    $("#yj-liuy").remove()
+                })
+        }
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+    })
+
+
+
+</script>
+</html>
